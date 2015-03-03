@@ -86,6 +86,11 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    guard-spork (2.1.0)
+      childprocess (>= 0.2.3)
+      guard (~> 2.0)
+      guard-compat (~> 1.0)
+      spork (>= 0.8.4)
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.7.0)
@@ -244,6 +249,7 @@ DEPENDENCIES
   byebug
   capybara
   guard-rspec
+  guard-spork
   jbuilder (~> 2.0)
   jquery-rails
   pg

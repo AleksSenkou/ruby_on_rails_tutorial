@@ -39,6 +39,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spork-rails'
   gem 'guard-rspec'
+  gem 'guard-spork'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end

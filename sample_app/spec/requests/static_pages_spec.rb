@@ -7,7 +7,7 @@ describe "StaticPages" do
 
   describe "Home page" do
     it "#{:content_it} 'Sample App'" do
-      visit 'static_pages/home'
+      visit 'static_pages/home' 
       expect(page).to have_content 'Sample App'
     end
 
