@@ -37,6 +37,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
+  gem 'spork-rails'
   gem 'guard-rspec'
   gem 'web-console', '~> 2.0'
   gem 'spring'
