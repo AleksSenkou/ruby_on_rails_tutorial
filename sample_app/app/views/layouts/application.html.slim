@@ -1,23 +1,15 @@
 doctype 5
 head
-  title = full_title(yield :title)
+  title = full_title yield :title
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
-  / <!--[if lt IE 9]>
-    / <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  / <![endif]-->
+  = render 'layouts/shim'
 
 body
-  header class='navbar navbar-fixed-top navbar-inverse'
-    .navbar-inner
-      .container
-        = link_to 'sample app', '#', id: 'logo'
-        nav
-          ul class='nav nav-pills pull-right'
-            li role="presentation" = link_to 'Home', '#' 
-            li role="presentation" = link_to 'Help', '#' 
-            li role="presentation" = link_to 'Sign in', '#'
+  = render 'layouts/header'
 
   .container           
     = yield
+    
+  = render 'layouts/footer'
