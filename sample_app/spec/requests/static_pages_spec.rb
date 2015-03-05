@@ -41,5 +41,13 @@ describe "StaticPages" do
     visit root_path
     click_link 'About'
     expect(page).to have_title 'About Us'
+    click_link 'Help'
+    expect(page).to have_title 'Help'
+    click_link 'Contact'
+    expect(page).to have_title 'Contact'
+    click_link 'sample app'
+    expect(page).to have_title 'Sample App'
+    click_link 'Sign up now!'
+    expect(page).to have_title 'Sign Up'
   end
 end
