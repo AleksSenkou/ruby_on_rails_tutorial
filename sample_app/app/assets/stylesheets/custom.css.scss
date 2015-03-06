@@ -4,6 +4,12 @@ $softGray: #eaeaea;
 $darkGray: #222;
 $gray: #555;
 
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html {
   overflow-y: scroll;
 }
@@ -74,26 +80,32 @@ p {
   }
 }
 
-/* footer */
-
-footer {
-  border-top: 1px solid $softGray;
-  color: $lightGray;
-  a {
-    color: $gray;
-    margin-left: 25px;
-    &:hover {
-      color: $darkGray;
-    }
-  }
+.footer {
+  // border: 1px;
+  // border-color: $gray;
   ul {
     list-style: none;
-    margin-right: 35px;
+    margin-right: 50px;
     li {
       float: left;
-      padding-top: 6px;
-      padding-bottom: 6px;
+      margin-right: 20px; 
+      padding-top: 17px;
       font-size: 1.1em;
     }
   }
+}
+
+#rails_img {
+  height: 50px;
+  width: 50px;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }
