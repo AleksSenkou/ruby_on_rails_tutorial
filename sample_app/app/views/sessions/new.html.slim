@@ -1,0 +1,19 @@
+- provide :title, "Sign in"
+
+h1 Sign in
+
+.form-horizontal
+  = form_for(:session, url: sessions_path) do |f|
+    .form-group
+      = f.label :email, class: "col-sm-4 control-label"
+      .col-sm-4
+        = f.text_field :email, class: "form-control" ,id: "inputEmail3"
+
+    .form-group
+      = f.label :password, class: "col-sm-4 control-label"
+      .col-sm-4
+        = f.password_field :password, class: "form-control", id: "inputPassword3"
+
+    = f.submit 'Sign in', class: "btn btn-lg btn-primary"
+
+  p#signup_link New user? #{link_to 'Sign up now!', signup_path}
