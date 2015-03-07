@@ -1,3 +1,5 @@
+@import 'bootstrap';
+
 $lightGray: #999;
 $white: #fff;
 $softGray: #eaeaea;
@@ -144,16 +146,10 @@ aside {
 }
 
 /* forms */
-
-
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 20px;
-  @include box-sizing;
+form {
+  margin-top: 45px;
 }
 
-input {
-  height: auto !important;
+input, textarea, select, .uneditable-input {
+  margin-bottom: 15px;
 }

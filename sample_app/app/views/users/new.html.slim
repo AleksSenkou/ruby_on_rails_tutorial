@@ -1,19 +1,27 @@
 - provide :title, "Sign Up"
 
 h1 Sign Up
-.row
-  div class="span6 offset3"
-    = form_for(@user) do |f|
-      = f.label :name
-      = f.text_field :name
 
-      = f.label :email
-      = f.text_field :email
+div class="form-horizontal"
+  = form_for(@user) do |f|
+    div class="form-group"
+      = f.label :name, class: "col-sm-4 control-label"
+      div class="col-sm-4"
+        = f.text_field :name, class: "form-control"
 
-      = f.label :password
-      = f.password_field :password
+    div class="form-group"
+      = f.label :email, class: "col-sm-4 control-label"
+      div class="col-sm-4"
+        = f.text_field :email, class: "form-control" ,id: "inputEmail3"
 
-      = f.label :password_confirmation, 'Confirmation'
-      = f.password_field :password_confirmation
+    div class="form-group"
+      = f.label :password, class: "col-sm-4 control-label"
+      div class="col-sm-4"
+        = f.password_field :password, class: "form-control", id: "inputPassword3"
 
-      = f.submit "Create my account", class: "btn btn-large btn-primary"
+    div class="form-group"
+      = f.label :password_confirmation, 'Confirmation', class: "col-sm-4 control-label"
+      div class="col-sm-4"
+        = f.password_field :password_confirmation, class: "form-control", id: "inputPassword3"
+
+    = f.submit "Create my account", class: "btn btn-lg btn-primary"
