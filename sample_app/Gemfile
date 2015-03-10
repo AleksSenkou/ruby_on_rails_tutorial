@@ -50,5 +50,7 @@ group :development, :test do
   gem 'guard-spork'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'cucumber-rails', '1.4.0', require: false 
+  gem 'database_cleaner'
 end
 
