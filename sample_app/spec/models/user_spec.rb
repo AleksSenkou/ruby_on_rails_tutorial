@@ -103,4 +103,9 @@ describe User, type: :model do
       specify { expect(user_for_invalid_password).to be_falsey }
     end
   end
+
+  describe 'remember token' do
+    before { @user.save }
+    it { expect(@user.remember_token).not_to be_blank }
+  end
 end
