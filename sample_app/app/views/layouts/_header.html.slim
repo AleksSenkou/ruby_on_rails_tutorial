@@ -4,6 +4,16 @@ header.navbar.navbar-fixed-top.navbar-inverse
       = link_to 'sample app', root_path, id: 'logo'
       nav
         ul.nav.nav-pills.pull-right
-          li role="presentation" = link_to 'Home', root_path 
-          li role="presentation" = link_to 'Help', help_path
-          li role="presentation" = link_to 'Sign in', '#'
+          li = link_to 'Home', root_path 
+          li = link_to 'Help', help_path
+          - if signed_in?
+            li = link_to 'Users', '#'
+            li id='fat-menu' class='dropdown'
+              a href='#' class="dropdown-toggle" data-toggle="dropdown" Account <b class="caret"></b> 
+              ul.dropdown-menu
+                li = link_to 'Profile', current_user
+                li = link_to 'Settings', '#'
+                li.divider
+                li = link_to 'Sign out', signout_path, method: 'delete'  
+          - else
+            li = link_to 'Sign in', signin_path
