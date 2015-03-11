@@ -41,4 +41,21 @@ describe "User Pages", type: :request do
     it { should_not have_title user.name}
     it { should have_content user.name }
   end
+
+  describe 'edit' do
+    let(:user) { FactoryGirl.create :user } 
+    before { visit edit_user_path user }
+
+    describe 'page' do
+      it { should have_title 'Edit user' }
+      it { should have_content 'Update your profile' }
+      it { should have_link('change', href: 'http://gravatar.com/emails') }
+    end
+
+    describe 'with invalid info' do
+      before { click_button 'Save changes' }
+
+      it { should have_content 'danger' }
+    end
+  end
 end
