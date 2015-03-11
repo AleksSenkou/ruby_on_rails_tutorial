@@ -42,20 +42,31 @@ describe "User Pages", type: :request do
     it { should have_content user.name }
   end
 
-  describe 'edit' do
-    let(:user) { FactoryGirl.create :user } 
-    before { visit edit_user_path user }
+  # describe 'edit' do
+  #   let(:user) { FactoryGirl.create :user } 
+  #   before { visit edit_user_path user }
 
-    describe 'page' do
-      it { should have_title 'Edit user' }
-      it { should have_content 'Update your profile' }
-      it { should have_link('change', href: 'http://gravatar.com/emails') }
-    end
+  #   describe 'page' do
+  #     it { should have_title 'Edit user' }
+  #     it { should have_content 'Update your profile' }
+  #     it { should have_link('change', href: 'http://gravatar.com/emails') }
+  #   end
 
-    describe 'with invalid info' do
-      before { click_button 'Save changes' }
+  #   describe 'with valid info' do
+  #     let(:new_name) { 'New name' }
+  #     let(:new_email) { 'new@example.com' }
+  #     before do
+  #       fill_in "user_name",                  with: new_name
+  #       fill_in "user_email",                 with: new_email
+  #       fill_in "user_password",              with: user.password
+  #       fill_in "user_password_confirmation", with: user.password
+  #       click_button 'Save changes' 
+  #     end
 
-      it { should have_content 'danger' }
-    end
-  end
+  #     it { should have_selector('div.alert.alert-success') }
+  #     it { should have_link 'Profile' }
+  #     specify { expect(user.reload.name).to  eq new_name }
+  #     specify { expect(user.reload.email).to eq new_email }
+  #   end
+  # end
 end

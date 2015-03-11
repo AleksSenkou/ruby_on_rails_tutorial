@@ -141,15 +141,18 @@ aside {
 }
 
 .gravatar {
-  float: left;
   margin-right: 10px;
+}
+
+.edit_gravatar {
+  padding-top: 150px;
 }
 
 /* forms */
 form {
   margin-top: 45px;
   input, textarea, select, .uneditable-input {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 }
 
