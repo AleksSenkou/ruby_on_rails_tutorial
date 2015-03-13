@@ -63,5 +63,10 @@ RSpec.describe "Authentication", type: :request do
         end
       end
     end
+
+    describe 'as wrong user' do
+      let(:user) { FactoryGirl.create :user }
+      let(:wrong_user) { FactoryGirl.create :user, email: "wrong@example.com" }
+    end
   end
 end
