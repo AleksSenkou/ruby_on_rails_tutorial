@@ -48,10 +48,10 @@ RSpec.describe "Authentication", type: :request do
       let(:user) { FactoryGirl.create :user } 
 
       describe 'when attempting to visit a protected page' do
-        before do 
+        before {
           visit edit_user_path user
           sign_in user
-        end
+        }
 
         describe'after sign in' do
           it 'should render the desired protected page' do
@@ -73,7 +73,10 @@ RSpec.describe "Authentication", type: :request do
         end
 
         describe 'visiting the user index' do
-          before { visit users_path }
+          before {
+            sign_in user 
+            visit users_path 
+          }
           it { should have_title 'All users' }
         end
       end
@@ -82,6 +85,11 @@ RSpec.describe "Authentication", type: :request do
     describe 'as wrong user' do
       let(:user) { FactoryGirl.create :user }
       let(:wrong_user) { FactoryGirl.create :user, email: "wrong@example.com" }
+    end
+
+    describe 'as non-admin user' do
+      let(:user) { FactoryGirl.create :user }
+      let(:non_admin) { FactoryGirl.create :user }
     end
   end
 end

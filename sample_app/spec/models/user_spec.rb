@@ -12,8 +12,18 @@ describe User, type: :model do
   it { should respond_to :password_confirmation }
   it { should respond_to :authenticate }
   it { should respond_to :remember_token }
+  it { should respond_to :admin }
   it { should be_valid }
+  it { should_not be_admin }
 
+  describe "with admin attribute set to 'true'" do
+    before { 
+      @user.save!
+      @user.toggle! :admin
+    }
+
+    it { should be_admin }
+  end
 
   describe 'when name is not present' do
     before { @user.name = '  ' }
@@ -53,11 +63,11 @@ describe User, type: :model do
   end
 
   describe 'when email address is already taken' do
-    before do
+    before {
       user_with_same_email = @user.dup
       user_with_same_email.email.upcase!
       user_with_same_email.save
-    end
+    }
 
     it { should_not be_valid }
   end
