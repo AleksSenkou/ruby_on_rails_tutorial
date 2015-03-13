@@ -74,7 +74,7 @@ RSpec.describe "Authentication", type: :request do
 
         describe 'visiting the user index' do
           before { visit users_path }
-          it { should have_title 'Sign in' }
+          it { should have_title 'All users' }
         end
       end
     end
