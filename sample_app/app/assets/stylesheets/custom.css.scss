@@ -159,3 +159,16 @@ form {
 #signup_link {
   margin-top: 15px;
 }
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $softGray;
+    &:last-child {
+      border-bottom: 1px solid $softGray;  
+    }
+  }
+}
