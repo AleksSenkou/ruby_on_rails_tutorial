@@ -26,11 +26,7 @@ RSpec.describe "Authentication", type: :request do
 
     describe "with valid info" do
       let(:user) { FactoryGirl.create :user }
-      before do
-        fill_in "session_email",    with: user.email.upcase
-        fill_in "session_password", with: user.password
-        click_button "Sign in"
-      end
+      before { sign_in user }
 
       it { should_not have_title user.name }
       it { should have_link "Profile",      href: user_path(user) }
@@ -50,6 +46,19 @@ RSpec.describe "Authentication", type: :request do
     describe 'for non-signed-in users' do
       let(:user) { FactoryGirl.create :user } 
 
+      describe 'when attempting to visit a protected page' do
+        before do 
+          visit edit_user_path user
+          sign_in user
+        end
+
+        describe'after sign in' do
+          it 'should render the desired protected page' do
+            expect(page).to have_content 'Update'
+          end
+        end
+      end
+
       describe 'in a User controller' do
 
         describe 'visiting the edit page' do
@@ -60,6 +69,11 @@ RSpec.describe "Authentication", type: :request do
         describe 'submitting to the update action' do
           before { patch user_path(user) }
           specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe 'visiting the user index' do
+          before { visit users_path }
+          it { should have_title 'Sign in' }
         end
       end
     end

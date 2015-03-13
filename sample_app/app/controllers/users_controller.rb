@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 
+  def index
+  end
+
   def show
     @user = User.find params[:id]
   end
@@ -40,8 +43,9 @@ class UsersController < ApplicationController
 
     def signed_in_user
       unless signed_in?
-        flash[:warning] = 'Please sign in.'  
+        store_location
         redirect_to signin_url
+        flash[:warning] = 'Please sign in.'  
       end
     end
 

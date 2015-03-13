@@ -3,6 +3,24 @@ require 'rails_helper'
 describe "User Pages", type: :request do
   subject { page }
 
+  describe 'index' do
+    before do 
+      sign_in FactoryGirl.create :user
+      FactoryGirl.create(:user, name: 'Bob', email: 'bob@example.com')
+      FactoryGirl.create(:user, name: 'Ben', email: 'ben@example.com')
+      visit users_path 
+    end
+
+    it { should have_title 'All users' }
+    it { should have_content 'All users' }
+
+    it 'should list each user' do
+      User.all.each do |user|
+        expect(page).to have_selector('li', text: user.name)
+      end
+    end
+  end
+
   describe "signup page" do
     before { visit signup_path }
     let(:submit) { "Create my account" }
@@ -42,31 +60,34 @@ describe "User Pages", type: :request do
     it { should have_content user.name }
   end
 
-  # describe 'edit' do
-  #   let(:user) { FactoryGirl.create :user } 
-  #   before { visit edit_user_path user }
+  describe 'edit' do
+    let(:user) { FactoryGirl.create :user } 
+    before do 
+      visit edit_user_path user
+      sign_in user
+    end
 
-  #   describe 'page' do
-  #     it { should have_title 'Edit user' }
-  #     it { should have_content 'Update your profile' }
-  #     it { should have_link('change', href: 'http://gravatar.com/emails') }
-  #   end
+    describe 'page' do
+      it { should have_title 'Edit user' }
+      it { should have_content 'Update your profile' }
+      it { should have_link('change', href: 'http://gravatar.com/emails') }
+    end
 
-  #   describe 'with valid info' do
-  #     let(:new_name) { 'New name' }
-  #     let(:new_email) { 'new@example.com' }
-  #     before do
-  #       fill_in "user_name",                  with: new_name
-  #       fill_in "user_email",                 with: new_email
-  #       fill_in "user_password",              with: user.password
-  #       fill_in "user_password_confirmation", with: user.password
-  #       click_button 'Save changes' 
-  #     end
+    describe 'with valid info' do
+      let(:new_name) { 'New name' }
+      let(:new_email) { 'new@example.com' }
+      before do
+        fill_in "edit_user_name",                  with: new_name
+        fill_in "edit_user_email",                 with: new_email
+        fill_in "edit_user_password",              with: user.password
+        fill_in "edit_user_password_confirmation", with: user.password
+        click_button 'Save changes' 
+      end
 
-  #     it { should have_selector('div.alert.alert-success') }
-  #     it { should have_link 'Profile' }
-  #     specify { expect(user.reload.name).to  eq new_name }
-  #     specify { expect(user.reload.email).to eq new_email }
-  #   end
-  # end
+      it { should have_selector('div.alert.alert-success') }
+      it { should have_link 'Profile' }
+      specify { expect(user.reload.name).to  eq new_name }
+      specify { expect(user.reload.email).to eq new_email }
+    end
+  end
 end

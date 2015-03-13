@@ -13,21 +13,21 @@ h1 Update your profile
     .form-group
       = f.label :name, class: "col-sm-4 control-label"
       .col-sm-4
-        = f.text_field :name, class: "form-control", id: "user_name"
+        = f.text_field :name, class: "form-control", id: "edit_user_name"
 
     .form-group
       = f.label :email, class: "col-sm-4 control-label"
       .col-sm-4
-        = f.text_field :email, class: "form-control" , id: "user_email"
+        = f.text_field :email, class: "form-control" , id: "edit_user_email"
 
     .form-group
       = f.label :password, class: "col-sm-4 control-label"
       .col-sm-4
-        = f.password_field :password, class: "form-control", id: "user_password"
+        = f.password_field :password, class: "form-control", id: "edit_user_password"
 
     .form-group
       = f.label :password_confirmation, 'Confirmation', class: "col-sm-4 control-label"
       .col-sm-4
-        = f.password_field :password_confirmation, class: "form-control", id: "user_password_confirmation"
+        = f.password_field :password_confirmation, class: "form-control", id: "edit_user_password_confirmation"
 
     = f.submit "Save changes", class: "btn btn-lg btn-primary"
