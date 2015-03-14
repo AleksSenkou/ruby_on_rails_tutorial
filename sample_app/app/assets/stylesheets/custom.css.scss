@@ -173,3 +173,50 @@ form {
     }
   }
 }
+
+#show_user_name {
+  float: left;
+  color: black;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+/* microposts */
+
+.microposts {
+  margin: 10px 0 0 9%;
+  h3 {
+    margin-right: 70%;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  ol {
+    list-style: none;
+    li {
+      padding: 10px 0;
+      border-top: 1px solid #e8e8e8;
+    }
+  }
+}
+
+.content {
+  display: block;
+  font-size: 0.9em;
+}
+
+.timestamp {
+  color: $lightGray;
+  font-size: 0.7em;
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}

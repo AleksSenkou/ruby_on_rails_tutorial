@@ -1,7 +1,15 @@
-div class="center jumbotron" 
-  h1 Welcome to the Sample App
-  h2 
-    'This is the home page 
-    a href="http://railstutorial.ru/" rails tutorial 
-    'of the sample application.
-  = link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary'
+- if signed_in? 
+  .row
+    aside.span4
+      section
+        = render 'shared/user_info'
+      section
+        = render 'shared/micropost_form'
+- else
+  div class="center jumbotron" 
+    h1 Welcome to the Sample App
+    h2 
+      'This is the home page 
+      a href="http://railstutorial.ru/" rails tutorial 
+      'of the sample application.
+    = link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary'

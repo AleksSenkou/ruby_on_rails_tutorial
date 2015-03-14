@@ -1,6 +1,13 @@
 .row
-  aside
+  .col-xs-3
     section
-      h1
-        = gravatar_for @user 
-        = @user.name
+      = gravatar_for @user 
+      h2#show_user_name = @user.name
+
+  .col-xs-9
+    - if @user.microposts.any?
+      .microposts
+        h3 Microposts (#{ @user.microposts.count })
+        ol
+          = render @microposts
+          = will_paginate @microposts
