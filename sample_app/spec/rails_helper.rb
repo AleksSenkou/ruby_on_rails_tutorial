@@ -5,6 +5,7 @@ require 'spec_helper'
 require 'helpers/utilities.rb'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
+require 'rspec/its'
 require 'capybara/rails'
 
 ActiveRecord::Migration.maintain_test_schema!
@@ -27,5 +28,10 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+  end
+
+  factory :micropost do
+    content 'Lorem ipsum'
+    user
   end
 end
