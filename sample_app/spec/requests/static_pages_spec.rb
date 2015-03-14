@@ -50,4 +50,20 @@ describe "StaticPages" do
     click_link 'Sign up now!'
     expect(page).to have_title 'Sign Up'
   end
+
+  describe 'for sign-in user' do
+    let(:user) { FactoryGirl.create :user }
+    before {
+      FactoryGirl.create(:micropost, user: user, content: 'Lorem ipsum')
+      FactoryGirl.create(:micropost, user: user, content: 'Lorem')
+      sign_in user
+      visit root_path
+    }
+
+    it "should render the user's feed" do
+      user.feed.each do |item|
+        expect(page).to have_selector("li##{item.id}", text: item.content)
+      end
+    end
+  end
 end
