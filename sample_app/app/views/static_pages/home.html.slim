@@ -1,10 +1,10 @@
 - if signed_in? 
-  .row
-    aside.span4
-      section
-        = render 'shared/user_info'
-      section
-        = render 'shared/micropost_form'
+  .col-xs-5
+    = render 'shared/user_info'
+    = render 'shared/micropost_form'
+  .microposts_home_page
+    h3 Micropost Feed
+    = render 'shared/feed'
 - else
   div class="center jumbotron" 
     h1 Welcome to the Sample App

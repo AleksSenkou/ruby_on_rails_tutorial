@@ -1,4 +1,5 @@
 = link_to gravatar_for(current_user, size: 100), current_user
-h1 = current_user.name
-span = link_to 'veiw my profile', current_user
-span = pluralize(current_user.microposts.count, "micropost")
+.user_info
+  h1 = current_user.name
+  li = pluralize(current_user.microposts.count, "micropost")
+  li = link_to 'veiw my profile', current_user

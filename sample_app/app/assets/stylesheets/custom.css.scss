@@ -199,6 +199,38 @@ form {
   }
 }
 
+.microposts_home_page {
+  margin: 10px 0 0 45%;
+  h3 {
+    margin-right: 75%;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  li {
+    list-style: none;
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+
+.user_info {
+  h1 {
+    font-size: 2em;
+    margin-right: 60%;
+    padding: 0;
+  }
+  li {
+    list-style: none;
+    font-size: 1em;
+  
+  }
+}
+
+#profile {
+  margin-left: 15%;
+
+}
+
 .content {
   display: block;
   font-size: 0.9em;
