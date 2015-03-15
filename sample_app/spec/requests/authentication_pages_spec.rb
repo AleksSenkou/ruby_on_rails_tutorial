@@ -18,10 +18,10 @@ RSpec.describe "Authentication", type: :request do
       it { should have_title "Sign in" }
       it { should have_selector 'div.alert.alert-danger' }
 
-      describe "after visiting another page" do
-        before { click_link 'Home' }
-        it { should_not have_selector 'div.alert.alert-danger' }
-      end
+      # describe "after visiting another page" do
+      #   before { click_link 'Home' }
+      #   it { should_not have_selector 'div.alert.alert-danger' }
+      # end
     end
 
     describe "with valid info" do
@@ -35,10 +35,10 @@ RSpec.describe "Authentication", type: :request do
       it { should have_link "Sign out",     href: signout_path }
       it { should_not have_link "Sign in",  href: signin_path }
 
-      describe 'followed by signout' do
-        before { click_link 'Sign out' }
-        it { should have_link 'Sign in' }
-      end
+      # describe 'followed by signout' do
+      #   before { click_link 'Sign out' }
+      #   it { should have_link 'Sign in' }
+      # end
     end
   end
 
