@@ -84,6 +84,58 @@ describe "User Pages", type: :request do
 
     it { should_not have_title user.name}
     it { should have_content user.name }
+
+    describe 'follow/unfollow buttons' do
+      let(:other_user) { FactoryGirl.create :user }
+      before { sign_in user }
+
+      describe 'following a user' do
+        before { visit user_path(other_user) }
+
+        it { should have_content other_user.name }
+
+        # it "should increment the followed user count" do
+        #   expect do
+        #     click_button 'Follow'
+        #   end.to change(user.followed_users, :count).by(1)
+        # end
+
+        # it "should increment the followers other user count" do
+        #   expect do
+        #     click_button 'Follow'
+        #   end.to change(other_user.followers, :count).by(1)
+        # end
+
+        # describe 'toggling the button' do
+        #   before { click_button "Follow" }
+        #   it { should have_xpath "//input[@value = 'Unfollow']" }
+        # end
+      end
+
+      describe 'unfollowing user' do
+        before {
+          user.follow! other_user
+          visit user_path(other_user)
+        }
+
+        # it "should decrement the followed user count" do
+        #   expect do
+        #     click_button 'Unfollow'
+        #   end.to change(user.followed_users, :count).by(-1)
+        # end
+
+        # it "should decrement the followers other user count" do
+        #   expect do
+        #     click_button 'Unfollow'
+        #   end.to change(other_user.followers, :count).by(-1)
+        # end
+
+        # describe "toggling the button" do
+        #   before { click_button 'Unfollow' }
+        #   it { should have_xpath "//input[@value = 'Follow']" }
+        # end
+      end
+    end
   end
 
   describe 'edit' do

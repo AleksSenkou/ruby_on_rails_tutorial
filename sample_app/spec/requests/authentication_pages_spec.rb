@@ -91,7 +91,19 @@ RSpec.describe "Authentication", type: :request do
         end
       end
 
-      describe 'in the microposts controller' do
+      describe 'in the Relationships conroller' do
+        describe 'submitting to the create action' do
+          before { post relationships_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        # describe 'submitting to the destroy action' do
+        #   before { delete relationships_path(1) }
+        #   specify { expect(response).to redirect_to(signin_path) }
+        # end
+      end
+
+      describe 'in the Microposts controller' do
 
         describe 'submitting to the create action' do
           before { post microposts_path }
