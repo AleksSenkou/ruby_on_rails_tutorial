@@ -1,0 +1,17 @@
+- provide title: @title
+
+.col-xs-4
+  = render 'shared/user_info'
+  = render 'shared/stats'
+  - if @users.any?
+    .user_avatars
+      - @users.each do |user|
+        = link_to gravatar_for(user, size: 30), user
+
+.follow_users
+  .col-xs-12
+    h3 = @title
+    - if @users.any?
+      ul.users
+        = render @users
+      = will_paginate
