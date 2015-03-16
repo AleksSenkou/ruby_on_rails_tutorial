@@ -3,9 +3,13 @@
     section
       = gravatar_for @user 
       h2#show_user_name = @user.name
+    section
+      = render 'shared/stats'
 
   .col-xs-9
     - if @user.microposts.any?
+      .follow_button
+        = render 'follow_form' if signed_in?
       .microposts
         h3 Microposts (#{ @user.microposts.count })
         ol
