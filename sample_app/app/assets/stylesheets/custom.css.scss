@@ -140,6 +140,27 @@ aside {
   }
 }
 
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $lightGray;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: #337ab7;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
 .gravatar {
   margin-right: 10px;
 }
